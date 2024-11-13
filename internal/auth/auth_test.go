@@ -1,12 +1,9 @@
 package auth
 
 import (
-	"errors"
 	"fmt"
 	"testing"
 )
-
-var errTest = errors.New("test")
 
 func TestGetApiKey(t *testing.T) {
 	tests := []struct {
@@ -27,7 +24,7 @@ func TestGetApiKey(t *testing.T) {
 				"Authorization": {"notApiKey"},
 			},
 			want:    "",
-			wantErr: errTest,
+			wantErr: ErrMalformedAuthHeader,
 		},
 		{
 			name: "valid auth header",
